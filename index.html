@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadesuh - Portfólio Profissional</title>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui;
+        }
+
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --primary-color: #7f5af0;
+            --verified-color: #1DA1F2;
+        }
+
+        body {
+            background: #0a0a0a;
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .aurora-bg {
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200vh;
+            background: linear-gradient(45deg, #0f4c75, #3282b8, #bbe1fa, #1b262c);
+            background-size: 400% 400%;
+            animation: aurora 20s linear infinite;
+            filter: blur(80px);
+            opacity: 0.15;
+            z-index: -1;
+        }
+
+        @keyframes aurora {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 2rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--glass-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .menu-group {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .ai-switch {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--glass-bg);
+            border-radius: 2rem;
+            border: 1px solid var(--glass-border);
+        }
+
+        .switch {
+            position: relative;
+            width: 48px;
+            height: 24px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #4a4a4a;
+            transition: 0.4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background: #fff;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background: var(--primary-color);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(24px);
+        }
+
+        main {
+            padding: 100px 2rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .profile-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .profile-pic {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--glass-border);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: #fff;
+            font-size: 1.2rem;
+            transition: 0.3s;
+        }
+
+        .sites-carousel {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .carousel-container {
+            border-radius: 1rem;
+            overflow: hidden;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            position: relative;
+        }
+
+        .carousel-iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+            pointer-events: none;
+        }
+
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .nav-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #4a4a4a;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .nav-dot.active {
+            background: var(--primary-color);
+            transform: scale(1.2);
+        }
+
+        .carousel-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            padding: 1.5rem 1.5rem 2.5rem 1.5rem;
+            color: #fff;
+            z-index: 50;
+        }
+
+        .carousel-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .carousel-info p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .visit-button {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            z-index: 100;
+            transition: 0.3s;
+        }
+
+        .collaborators-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .collaborator-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            padding: 1rem;
+            border-radius: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .github-widget {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 1rem;
+            padding: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid var(--glass-border);
+        }
+
+        footer p {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        .verified-badge {
+            width: 18px;
+            height: 18px;
+            fill: var(--verified-color);
+            margin-left: 0.4rem;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            z-index: 1500;
+        }
+
+        .collaborator-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            max-width: 500px;
+            width: 90%;
+            z-index: 2000;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 30px rgba(127, 90, 240, 0.3);
+        }
+
+        .mini-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .mini-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            main {
+                padding: 80px 1rem 1rem;
+            }
+
+            .profile-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 1rem;
+            }
+
+            .profile-pic {
+                width: 80px;
+                height: 80px;
+                margin: 0 auto;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            footer p {
+                font-size: 0.7rem;
+            }
+
+            .carousel-info {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="aurora-bg"></div>
+    <div id="VG_OVERLAY_CONTAINER" style="width: 0; height: 0;"></div>
+    <div class="overlay"></div>
+
+    <nav>
+        <h1>iCad UI</h1>
+        <div class="menu-group">
+            <div class="dropdown">
+                <button class="ai-switch">
+                    <i class='bx bx-robot'></i>
+                    <span>iCad AI</span>
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="profile-card">
+            <img src="my-photo.jpg" alt="Foto" class="profile-pic">
+            <div>
+                <h2>Cadesuh
+                    <svg class="verified-badge" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                </h2>
+                <div class="social-links">
+                    <a href="https://github.com/Suport-tCad" target="_blank"><i class='bx bxl-github'></i></a>
+                    <a href="Does_not_exist " target="_blank"><i class='bx bxl-linkedin'></i></a>
+                    <a href="https://youtube.com/@official-tcad" target="_blank"><i class='bx bxl-youtube'></i></a>
+                    <a href="https://Instagram.com/cadesuh.official" target="_blank"><i class='bx bxl-instagram-alt'></i></a>
+                    <a href="404_|_talvez_encontre_pelo_Instagram_oficial:_cadesuh.official" target="_blank"><i class='bx bxl-facebook-circle'></i></a>
+                    <a href="https://ko-fi.com/cadesuh" target="_blank"><i class='bx bxl-bitcoin'></i></a>
+                </div>
+            </div>
+        </section>
+
+        <section class="sites-carousel">
+            <div class="carousel-container">
+                <a href="#" class="visit-button" id="visitButton" target="_blank">Visitar Site</a>
+                <iframe class="carousel-iframe" src="" loading="lazy"></iframe>
+                <div class="carousel-info">
+                    <h3 id="siteTitle">Título do Site</h3>
+                    <p id="siteDescription">Descrição breve do site e suas funcionalidades</p>
+                </div>
+            </div>
+            <div class="carousel-nav"></div>
+        </section>
+
+        <section class="collaborators-grid">
+            <div class="collaborator-card" 
+                 data-collaborators='[
+                     {"name":"Colaborador 1","role":"Desenvolvedor","link":"https://link1.com","avatar":"avatar1.png"},
+                     {"name":"Colaborador 2","role":"Designer","link":"https://link2.com","avatar":"avatar2.png"}
+                 ]'>
+                <h3>Equipe Principal</h3>
+                <p>Clique para ver detalhes</p>
+            </div>
+        </section>
+
+        <div class="github-widget">
+            <img src="https://camo.githubusercontent.com/4fc0cbb14d2733f473397381d5dd5e4027fc86b0d748be044ebde11a646e7d88/68747470733a2f2f6769746875622d726561646d652d73746174732e76657263656c2e6170702f6170692f746f702d6c616e67732f3f757365726e616d653d7375706f72742d74636164267468656d653d6d69646e696768742d707572706c6526686964655f626f726465723d7472756526696e636c7564655f616c6c5f636f6d6d6974733d66616c736526636f756e745f707269766174653d66616c7365266c61796f75743d636f6d70616374" 
+                 alt="GitHub Stats" 
+                 style="width:100%; border-radius:1rem;">
+        </div>
+
+        <div class="collaborator-modal glass-card">
+            <button class="modal-close"><i class='bx bx-x'></i></button>
+            <div class="mini-cards"></div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Cadesuh. Todos os direitos reservados</p>
+    </footer>
+
+    <audio id="clickSound">
+        <source src="AUDIO_NOT" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // Sistema de Estado
+        let currentSlide = 0;
+        let autoSlideInterval;
+        const state = {
+            aiEnabled: true,
+            carouselPosition: 0
+        };
+
+        // Elementos Globais
+        const clickSound = document.getElementById('clickSound');
+        clickSound.volume = 0.3;
+
+        // Dados do Carrossel
+        const sites = [
+            {
+                url: 'https://i-cadesuh.blogspot.com',
+                title: 'Site oficial',
+                description: 'Um dos melhores suportes da franquia',
+                embedUrl: 'https://i-cadesuh.blogspot.com'
+            },
+            {
+                url: 'https://uiverse.io/',
+                title: 'Forum uiverse',
+                description: 'Um ótimo site para desenvolver idéias e adquirir conhecimento ',
+                embedUrl: 'https://uiverse.io/'
+            },
+            {
+                url: 'https://mambaui.com/',
+                title: 'Manba UI',
+                description: 'Outro grande forum mais indicado para projetos no blogger',
+                embedUrl: 'https://mambaui.com/'
+            }
+        ];
+
+        // Funções de Estado
+        function saveState() {
+            state.aiEnabled = document.querySelector('.switch input').checked;
+            state.carouselPosition = currentSlide;
+            localStorage.setItem('portfolioState', JSON.stringify(state));
+        }
+
+        function loadState() {
+            const savedState = JSON.parse(localStorage.getItem('portfolioState'));
+            if (savedState) {
+                const aiSwitch = document.querySelector('.switch input');
+                aiSwitch.checked = savedState.aiEnabled;
+                document.getElementById('VG_OVERLAY_CONTAINER').style.display = 
+                    savedState.aiEnabled ? 'block' : 'none';
+                currentSlide = savedState.carouselPosition || 0;
+            }
+        }
+
+        // Controle do Carrossel
+        function initCarousel() {
+            const nav = document.querySelector('.carousel-nav');
+            nav.innerHTML = '';
+            
+            sites.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.className = `nav-dot ${index === currentSlide ? 'active' : ''}`;
+                dot.addEventListener('click', () => {
+                    clearInterval(autoSlideInterval);
+                    changeSlide(index);
+                    startAutoSlide();
+                    playClickSound();
+                });
+                nav.appendChild(dot);
+            });
+
+            startAutoSlide();
+            changeSlide(currentSlide);
+        }
+
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(() => {
+                currentSlide = (currentSlide + 1) % sites.length;
+                changeSlide(currentSlide);
+            }, 8000);
+        }
+
+        function handleSwipe(startX, endX) {
+            const swipeThreshold = 50;
+            const swipeDistance = endX - startX;
+
+            if (Math.abs(swipeDistance) < swipeThreshold) return;
+
+            clearInterval(autoSlideInterval);
+            currentSlide = swipeDistance > 0 ? 
+                (currentSlide - 1 + sites.length) % sites.length :
+                (currentSlide + 1) % sites.length;
+            
+            changeSlide(currentSlide);
+            startAutoSlide();
+        }
+
+        function changeSlide(index) {
+            currentSlide = index;
+            const site = sites[index];
+            
+            document.querySelector('.carousel-iframe').src = site.embedUrl;
+            document.getElementById('siteTitle').textContent = site.title;
+            document.getElementById('siteDescription').textContent = site.description;
+            document.getElementById('visitButton').href = site.url;
+
+            document.querySelectorAll('.nav-dot').forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+
+            saveState();
+        }
+
+        // Controle de Modal
+        function toggleModal(show) {
+            document.querySelector('.overlay').style.display = show ? 'block' : 'none';
+            document.querySelector('.collaborator-modal').style.display = show ? 'block' : 'none';
+        }
+
+        // Sistema de Som
+        function playClickSound() {
+            if(clickSound.src) {
+                clickSound.currentTime = 0;
+                clickSound.play().catch(error => {
+                    console.log('Reprodução de áudio bloqueada pelo navegador');
+                });
+            }
+        }
+
+        // Event Listeners
+        document.querySelectorAll('a, button, .nav-dot, .collaborator-card, .social-links a, .modal-close, .mini-card').forEach(element => {
+            element.addEventListener('click', playClickSound);
+        });
+
+        document.querySelectorAll('.collaborator-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const collaborators = JSON.parse(card.dataset.collaborators);
+                const miniCards = collaborators.map(collab => `
+                    <div class="mini-card" onclick="window.open('${collab.link}', '_blank')">
+                        <img src="${collab.avatar}" class="user-avatar" alt="${collab.name}">
+                        <div>
+                            <h4>${collab.name}</h4>
+                            <p>${collab.role}</p>
+                        </div>
+                    </div>
+                `).join('');
+                
+                document.querySelector('.mini-cards').innerHTML = miniCards;
+                toggleModal(true);
+            });
+        });
+
+        document.querySelector('.modal-close').addEventListener('click', () => toggleModal(false));
+        document.querySelector('.overlay').addEventListener('click', () => toggleModal(false));
+
+        // Integração TIXAE
+        (function() {
+            window.VG_CONFIG = {
+                ID: "809titikr8kgxc4f",
+                region: 'eu',
+                render: 'bottom-right',
+                stylesheets: [
+                    "https://vg-bunny-cdn.b-cdn.net/vg_live_build/styles.css"
+                ]
+            };
+            const script = document.createElement('script');
+            script.src = "https://vg-bunny-cdn.b-cdn.net/vg_live_build/vg_bundle.js";
+            script.defer = true;
+            document.body.appendChild(script);
+        })();
+
+        // Inicialização
+        window.addEventListener('load', () => {
+            loadState();
+            initCarousel();
+            
+            // Touch/Mouse Events
+            const carousel = document.querySelector('.sites-carousel');
+            let touchStartX = 0;
+            
+            carousel.addEventListener('touchstart', e => {
+                touchStartX = e.touches[0].clientX;
+            });
+
+            carousel.addEventListener('touchend', e => {
+                const touchEndX = e.changedTouches[0].clientX;
+                handleSwipe(touchStartX, touchEndX);
+            });
+
+            carousel.addEventListener('mousedown', e => {
+                touchStartX = e.clientX;
+                document.addEventListener('mouseup', e => {
+                    const touchEndX = e.clientX;
+                    handleSwipe(touchStartX, touchEndX);
+                }, {once: true});
+            });
+        });
+
+        // Controle da AI
+        document.querySelector('.switch input').addEventListener('change', function() {
+            document.getElementById('VG_OVERLAY_CONTAINER').style.display = 
+                this.checked ? 'block' : 'none';
+            saveState();
+            playClickSound();
+        });
+       // Adiciona o favicon via JavaScript
+       const link = document.createElement('link');
+        link.rel = 'icon';
+        link.type = 'image/x-icon';
+        link.href = 'faincon.ico'; // Ajuste o caminho conforme necessário
+document.head.appendChild(link);
+    </script>
+</body>
+</html>
