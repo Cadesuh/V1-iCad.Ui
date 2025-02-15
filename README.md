@@ -11,8 +11,8 @@ Código otimizado para performance móvel, demonstrando que desenvolvimento prof
 
 # 🌐 Portfólio Moderno com IA Integrada
 
-[![GitHub License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/Supot-tCad/iCad.UI/blob/main/LICENSE)
-[![Website Status](https://img.shields.io/website?down_message=offline&up_message=online&url=https%3A%2F%2Fseusite.com)](https://iCad.UI.com)
+[![GitHub License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/Supot-tCad/V1-iCad.Ui/blob/main/LICENSE)
+[![Website Status](https://img.shields.io/website?down_message=offline&up_message=online&url=https%3A%2F%2Fseusite.com)](https://V1-iCad.Ui.com)
 
 <img src="preview.jpg" alt="Preview do Site" width="100%" style="border-radius: 10px; margin: 20px 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1)"/>
 
@@ -32,6 +32,6 @@ Código otimizado para performance móvel, demonstrando que desenvolvimento prof
 
 ## 🚀 Como Executar
 ```bash
-git clone https://github.com/Suport-tCad/iCad.UI.git
+git clone https://github.com/Suport-tCad/V1-iCad.Ui.git
 cd seu-repositorio
 # Abra o arquivo index.html em qualquer navegador moderno
