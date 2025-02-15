@@ -12,7 +12,7 @@ Código otimizado para performance móvel, demonstrando que desenvolvimento prof
 # 🌐 Portfólio Moderno com IA Integrada
 
 [![GitHub License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/Supot-tCad/V1-iCad.Ui/blob/main/LICENSE)
-[![Website Status](https://img.shields.io/website?down_message=offline&up_message=online&url=https%3A%2F%2Fseusite.com)](https://V1-iCad.Ui.com)
+[![Website Status](https://img.shields.io/website?down_message=offline&up_message=online&url=https%3A%2F%2Fseusite.com)]([https://V1-iCad.Ui.com](https://suport-tcad.github.io/V1-iCad.Ui/))
 
 <img src="preview.jpg" alt="Preview do Site" width="100%" style="border-radius: 10px; margin: 20px 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1)"/>
 
