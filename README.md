@@ -14,7 +14,7 @@ Código otimizado para performance móvel, demonstrando que desenvolvimento prof
 [![GitHub License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/Supot-tCad/V1-iCad.Ui/blob/main/LICENSE)
 
 
-<img src="preview.jpg" alt="Preview do Site" width="100%" style="border-radius: 10px; margin: 20px 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1)"/>
+<img src="preview-site.jpg" alt="Preview do Site" width="100%" style="border-radius: 10px; margin: 20px 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1)"/>
 
 ## ✨ Funcionalidades Principais
 - 🪄 Efeito Glassmorphism premium
