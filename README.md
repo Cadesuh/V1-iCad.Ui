@@ -35,3 +35,5 @@ Código otimizado para performance móvel, demonstrando que desenvolvimento prof
 git clone https://github.com/Suport-tCad/V1-iCad.Ui.git
 cd seu-repositorio
 # Abra o arquivo index.html em qualquer navegador moderno
+```
+![All good](https://user-images.githubusercontent.com/74038190/225813708-98b745f2-7d22-48cf-9150-083f1b00d6c9.gif)
