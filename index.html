@@ -27,7 +27,7 @@
             overflow-x: hidden;
             position: relative;
         }
-
+      
         .aurora-bg {
             position: fixed;
             top: -50%;
@@ -581,7 +581,16 @@
             document.querySelector('.collaborator-modal').style.display = show ? 'block' : 'none';
         }
 
-        
+        // Sistema de Som
+        function playClickSound() {
+            if(clickSound.src) {
+                clickSound.currentTime = 0;
+                clickSound.play().catch(error => {
+                    console.log('Reprodução de áudio bloqueada pelo navegador');
+                });
+            }
+        }
+
         // Event Listeners
         document.querySelectorAll('a, button, .nav-dot, .collaborator-card, .social-links a, .modal-close, .mini-card').forEach(element => {
             element.addEventListener('click', playClickSound);
